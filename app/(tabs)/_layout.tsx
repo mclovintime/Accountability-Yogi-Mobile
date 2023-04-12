@@ -1,12 +1,16 @@
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
 
-import Colors from '../../constants/Colors';
+import TabOneScreen from '/home/halincandenza/personalProjects/realReactTestrun/app/(tabs)/index.tsx';
+import TabTwoScreen from '/home/halincandenza/personalProjects/realReactTestrun/app/(tabs)/two.tsx';
+import ModalScreen from '/home/halincandenza/personalProjects/realReactTestrun/app/modal.tsx';
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
+const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
@@ -14,42 +18,41 @@ function TabBarIcon(props: {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+function TabsNavigator() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
+    
+      <Tab.Navigator>
+        <Tab.Screen
+          name="TabOne"
+          component={TabOneScreen}
+          options={{
+            title: 'TEST',
+            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          }}
+        />
+        <Tab.Screen
+          name="TabTwo"
+          component={TabTwoScreen}
+          options={{
+            title: 'Tab Two',
+            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          }}
+        />
+      </Tab.Navigator>
+    
+  );
+}
+
+export default function App() {
+  return (
+    // Remove the NavigationContainer from here
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Tabs"
+        component={TabsNavigator}
+        options={{ headerShown: false }}
       />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
+      <Stack.Screen name="Modal" component={ModalScreen} />
+    </Stack.Navigator>
   );
 }
