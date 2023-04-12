@@ -7,8 +7,8 @@ import {
   Animated,
   ActivityIndicator,
 } from 'react-native';
-import { techYogi } from '../../assets/assets';
-import WavyPattern from '../../components/WavyPattern';
+import { techYogi } from '../assets/assets';
+import WavyPattern from '/home/halincandenza/personalProjects/realReactTestrun/components/WavyPattern.tsx';
 import * as Font from 'expo-font';
 
 type IntroScreenProps = {
@@ -28,7 +28,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onAnimationComplete }) => {
     const loadFonts = async () => {
       try {
         await Font.loadAsync({
-          'GreatVibes-Regular': require('../../assets/fonts/GreatVibes-Regular.ttf'),
+          'GreatVibes-Regular': require('/home/halincandenza/personalProjects/realReactTestrun/assets/fonts/GreatVibes-Regular.ttf'),
         });
         setFontLoaded(true);
         setLoading(false);
