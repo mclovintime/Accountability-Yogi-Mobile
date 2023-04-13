@@ -82,8 +82,8 @@ app.post('/login', (req, res) => {
 // Netflix viewing history route
 app.get('/viewing-history', async (req, res) => {
   const credentials = {
-    email: 'youremail@example.com',
-    password: 'yourpassword',
+    email: 'mclaugth01@esj.org',
+    password: 'qK8JonEH',
   };
 
   try {

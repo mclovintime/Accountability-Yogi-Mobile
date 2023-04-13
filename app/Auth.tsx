@@ -62,6 +62,32 @@ export default function Auth() {
     setIsSignUp(!isSignUp);
   };
 
+  const handleNetflixTest = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/viewing-history', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'cors', // Add this line
+        credentials: 'same-origin', // Add this line
+      });
+  
+      if (response.status === 200) {
+        const viewingHistory = await response.json();
+        console.log('Viewing history:', viewingHistory);
+        // Handle successful request
+      } else {
+        const error = await response.json();
+        console.log('Viewing history error:', error);
+        // Handle request error
+      }
+    } catch (error) {
+      console.log('Viewing history error:', error);
+      // Handle request error
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{isSignUp ? 'Sign Up' : 'Login'}</Text>
@@ -86,7 +112,18 @@ export default function Auth() {
           onPress={isSignUp ? handleSignUp : handleLogin}
         >
           <Text style={styles.submitButtonText}>{isSignUp ? 'Sign Up' : 'Login'}</Text>
+          
+          
         </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={handleNetflixTest}
+        >
+          <Text style={styles.submitButtonText}>{"try netflix login"}</Text>
+          
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.switchButton} onPress={toggleForm}>
           <Text style={styles.switchButtonText}>
             {isSignUp ? 'Switch to Login' : 'Switch to Sign Up'}
