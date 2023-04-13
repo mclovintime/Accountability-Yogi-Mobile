@@ -83,7 +83,7 @@ app.post('/login', (req, res) => {
 app.get('/viewing-history', async (req, res) => {
   const credentials = {
     email: 'mclaugth01@esj.org',
-    password: 'qK8JonEH',
+    password: '#######',
   };
 
   try {

@@ -6,10 +6,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 import Auth from '/home/halincandenza/personalProjects/realReactTestrun/app/Auth.tsx'
-import TabOneScreen from '/home/halincandenza/personalProjects/realReactTestrun/app/(tabs)/indexInTabs.tsx';
-import TabTwoScreen from '/home/halincandenza/personalProjects/realReactTestrun/app/(tabs)/two.tsx';
+import TabOneScreen from '/home/halincandenza/personalProjects/realReactTestrun/app/tabs/indexInTabs.tsx';
+import TabTwoScreen from '/home/halincandenza/personalProjects/realReactTestrun/app/tabs/two.tsx';
 import ModalScreen from '/home/halincandenza/personalProjects/realReactTestrun/app/modal.tsx';
-
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -22,8 +21,6 @@ function TabBarIcon(props: {
 }
 
 function TabsNavigator() {
-
-
   return (
       <Tab.Navigator>
         <Tab.Screen
@@ -43,7 +40,6 @@ function TabsNavigator() {
           }}
         />
       </Tab.Navigator>
-    
   );
 }
 
@@ -51,7 +47,6 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   return (
-    
       <Stack.Navigator>
         {isLoggedIn ? (
           <>
@@ -70,6 +65,5 @@ export default function App() {
           />
         )}
       </Stack.Navigator>
-    
   );
 }

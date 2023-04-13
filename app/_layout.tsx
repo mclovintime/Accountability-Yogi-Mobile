@@ -6,7 +6,7 @@ import { useFonts } from 'expo-font';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 import IntroScreenComponent from '/home/halincandenza/personalProjects/realReactTestrun/components/IntroScreenComponent.tsx';
-import App from '/home/halincandenza/personalProjects/realReactTestrun/app/(tabs)/layoutWithTabsAndAuthentication';
+import App from '/home/halincandenza/personalProjects/realReactTestrun/app/tabs/layoutWithTabsAndAuthentication';
 import { SplashScreen } from 'expo-router';
 
 const lightGrey = '#f0f2f5';
