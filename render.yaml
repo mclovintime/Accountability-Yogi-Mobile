@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: yogi-cloud
+    env: node
+    buildCommand: "npm ci && npm run build"
+    startCommand: "node server/server.js"
+    envVars:
+      - key: NODE_ENV
+        value: production

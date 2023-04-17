@@ -1,0 +1,31 @@
+[33mcommit 75e016b0d830b3e3b13393770123da5060f7dd74[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Thomas McLaughlin <123tommygun1@gmail.com>
+Date:   Thu Apr 13 11:11:50 2023 -0400
+
+    Preparing backend deploy again
+    
+    web compile is failing, something to do with expo router. When it's uninstalled the whole program kerplunks. Moving on and attempting to use firebase now
+
+[33mcommit 8a10ab9470b8b1402ccdc96fdb07d0fa914e62c6[m
+Author: Thomas McLaughlin <123tommygun1@gmail.com>
+Date:   Wed Apr 12 22:30:57 2023 -0400
+
+    reverted, prepped netflix api, error on web compile so maybe change expo-router to react nav
+
+[33mcommit fb92fb4ea03c9265e1a686aedac0fbc2e146c996[m
+Author: Thomas McLaughlin <123tommygun1@gmail.com>
+Date:   Wed Apr 12 16:58:08 2023 -0400
+
+    backend prepared, various fixes, preparing to deploy to vercel
+
+[33mcommit ec412bd9070d261e146251c3c4c5a2635c41d985[m
+Author: Thomas McLaughlin <123tommygun1@gmail.com>
+Date:   Wed Apr 12 11:29:11 2023 -0400
+
+    intro & nav setup
+
+[33mcommit dd403301f5d570e3114970026ed6c4aea0d2e4f0[m
+Author: Thomas McLaughlin <123tommygun1@gmail.com>
+Date:   Tue Apr 11 15:17:12 2023 -0400
+
+    Created a new Expo app

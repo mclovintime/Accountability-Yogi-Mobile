@@ -7,12 +7,14 @@ const netflix = new Netflix();
 // JSON dependencies for login stuff
 const bodyParser = require('body-parser');
 const jsonfile = require('jsonfile');
+// import bcrypt for hashing passwords
+const bcrypt = require('bcrypt');
 
 const app = express();
 
 //enables web debug (hopefully)
 app.use(cors());
-const port = process.env.PORT || 3000;
+const port = 3000;
 const usersFile = '/home/halincandenza/personalProjects/realReactTestrun/users.json';
 
 // Middleware for parsing JSON request bodies
@@ -66,10 +68,12 @@ app.post('/login', (req, res) => {
   
       if (user) {
         // comparing submitted password with the stored hashed password
-        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
   
         if (passwordMatch) {
           res.status(200).json({ email: user.email });
+          console.log("password match")
         } else {
           res.status(401).json({ error: 'Invalid email or password' });
         }
