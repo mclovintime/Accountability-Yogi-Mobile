@@ -7,6 +7,7 @@ import {
   Animated,
   ActivityIndicator,
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { techYogi } from '../assets/assets';
 import WavyPattern from '/home/halincandenza/personalProjects/realReactTestrun/components/WavyPattern.tsx';
 import * as Font from 'expo-font';
@@ -20,6 +21,10 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onAnimationComplete }) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const floatAnim = useRef(new Animated.Value(0)).current;
   const loadingOpacity = useRef(new Animated.Value(1)).current;
+
+  //IMPORTANT for fixing background to white on load
+  const [bgColor, setBgColor] = useState("#fff"); //default color
+  
 
   const [fontLoaded, setFontLoaded] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -53,6 +58,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onAnimationComplete }) => {
           duration: 2000,
           useNativeDriver: true,
         }).start(() => {
+          setBgColor("#e6e6e6"); // Change the background color after the PNG has faded in
           Animated.timing(translateY, {
             toValue: -1000,
             duration: 2000,
@@ -91,7 +97,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onAnimationComplete }) => {
  
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: bgColor}]}>
       <Animated.View
         style={[
           styles.loadingContainer,
@@ -110,6 +116,14 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onAnimationComplete }) => {
           { transform: [{ translateY }], opacity: fadeAnim },
         ]}
       >
+        <LinearGradient
+          colors={['#FAC8C9', '#C9E4F2', '#E4C9F2']}
+
+          start={[0, 0]}
+          end={[0, 1]}
+          style={styles.gradient}
+        />
+
         <Animated.View
           style={[
             styles.logoContainer,
@@ -120,7 +134,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onAnimationComplete }) => {
         </Animated.View>
         {
   fontLoaded && (
-    <Text style={styles.appName}>Accountability Yogi</Text>
+    <Text style={[styles.appName, {zIndex: 1}]}>Accountability Yogi</Text>
   )
 }
         <View style={styles.wavyPatternContainer}>
@@ -134,7 +148,6 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onAnimationComplete }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e6e6e6', // Set the background color to the same light grey as the SVG
   },
   loadingContainer: {
     position: 'absolute',
@@ -150,7 +163,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f0f2f5', // Set the background color to the same light grey as the SVG
+    // backgroundColor: '#f0f2f5', // yogi load background
+    marginBottom: -100
+  },
+  gradient: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
   },
   logoContainer: {
     alignItems: 'center',

@@ -62,8 +62,9 @@ export default function App() {
         ) : (
           <Stack.Screen
             name="Auth"
-            component={Auth}
+            children={() => <Auth setIsLoggedIn={setIsLoggedIn} />}
             options={{ headerShown: false }}
+            
           />
         )}
       </Stack.Navigator>

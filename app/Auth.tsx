@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useState, ReactNode, useEffect } from 'react';
+import { Animated, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-export default function Auth() {
+//fix the error Binding element 'route' implicitly has an 'any' on the route prop
+interface AuthProps {
+  setIsLoggedIn: (loggedIn: boolean) => void;
+}
+
+const Auth: React.FC<AuthProps> = ({ setIsLoggedIn }) => {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSignUp, setIsSignUp] = useState(false);
+  const [opacity] = useState(new Animated.Value(0));
+
+  useEffect(() => {
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 500, // Change the duration to control the speed of the fade-in
+      useNativeDriver: true,
+    }).start();
+  }, [opacity]);
 
   const handleLogin = async () => {
     try {
@@ -19,7 +34,9 @@ export default function Auth() {
       if (response.status === 200) {
         const user = await response.json();
         console.log('Logged in:', user);
-        // Handle successful login
+        // Handle successful login here
+        setIsLoggedIn(true)
+
       } else {
         const error = await response.json();
         console.log('Login error:', error);
@@ -62,34 +79,9 @@ export default function Auth() {
     setIsSignUp(!isSignUp);
   };
 
-  const handleNetflixTest = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/viewing-history', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        mode: 'cors', // Add this line
-        credentials: 'same-origin', // Add this line
-      });
-  
-      if (response.status === 200) {
-        const viewingHistory = await response.json();
-        console.log('Viewing history:', viewingHistory);
-        // Handle successful request
-      } else {
-        const error = await response.json();
-        console.log('Viewing history error:', error);
-        // Handle request error
-      }
-    } catch (error) {
-      console.log('Viewing history error:', error);
-      // Handle request error
-    }
-  };
-
   return (
     <View style={styles.container}>
+      <Animated.View style={{ ...styles.container, opacity }}>
       <Text style={styles.title}>{isSignUp ? 'Sign Up' : 'Login'}</Text>
       <View style={styles.inputContainer}>
         <TextInput
@@ -116,20 +108,13 @@ export default function Auth() {
           
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.submitButton}
-          onPress={handleNetflixTest}
-        >
-          <Text style={styles.submitButtonText}>{"try netflix login"}</Text>
-          
-        </TouchableOpacity>
-
         <TouchableOpacity style={styles.switchButton} onPress={toggleForm}>
           <Text style={styles.switchButtonText}>
             {isSignUp ? 'Switch to Login' : 'Switch to Sign Up'}
           </Text>
         </TouchableOpacity>
       </View>
+    </Animated.View>
     </View>
   );
 }
@@ -152,6 +137,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   input: {
+    width: 250,
     height: 40,
     paddingHorizontal: 10,
     marginBottom: 10,
@@ -187,3 +173,5 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 });
+
+export default Auth;
