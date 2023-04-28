@@ -23,7 +23,8 @@ const Auth: React.FC<AuthProps> = ({ setIsLoggedIn }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      console.log("attempting to login...")
+      const response = await fetch('https://yogi-inna-cloud.onrender.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +51,8 @@ const Auth: React.FC<AuthProps> = ({ setIsLoggedIn }) => {
 
   const handleSignUp = async () => {
     try {
-      const response = await fetch('http://localhost:3000/signup', {
+      console.log("attempting to signup...")
+      const response = await fetch('https://yogi-inna-cloud.onrender.com/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

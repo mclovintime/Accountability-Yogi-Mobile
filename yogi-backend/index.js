@@ -31,7 +31,9 @@ MongoClient.connect(connectionString, { useNewUrlParser: true, useUnifiedTopolog
   });
 
 app.post("/signup", cors(), async (req, res) => {
+  
   const { email, password } = req.body;
+  console.log(`Attempting signup for user ${email}...`)
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const existingUser = await usersCollection.findOne({ email });
@@ -47,6 +49,7 @@ app.post("/signup", cors(), async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
+  console.log("Attempting login...")
   const { email, password } = req.body;
   const user = await usersCollection.findOne({ email });
 
