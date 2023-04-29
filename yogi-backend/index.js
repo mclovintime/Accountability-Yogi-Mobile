@@ -5,6 +5,9 @@ const netflix = new Netflix();
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const { MongoClient } = require("mongodb");
+require('dotenv').config();
+
+const myVariable = process.env.mongoKey;
 
 const app = express();
 const port = 3000;
@@ -13,7 +16,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Replace with your MongoDB Atlas connection string
-// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+const connectionString = myVariable;
 let usersCollection;
 
 MongoClient.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
