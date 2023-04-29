@@ -16,6 +16,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Replace with your MongoDB Atlas connection string
+
 const connectionString = myVariable;
 let usersCollection;
 
