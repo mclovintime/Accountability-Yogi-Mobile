@@ -2,6 +2,7 @@
 
 **Date:** October 9, 2026
 **Follows on from:** [gbp-subcontracting-home-services.md](gbp-subcontracting-home-services.md)
+**Creators being tracked:** [creators-watchlist.md](creators-watchlist.md)
 
 ---
 

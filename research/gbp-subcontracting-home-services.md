@@ -3,6 +3,10 @@
 **The question:** What if you set up several Google Business Profiles (GBPs) for legit-looking landscaping or other home-service businesses in your city, out-optimized everyone on reviews, websites and local SEO, and subcontracted every job to a reliable group of contractors? Is it legit? Do people do it?
 
 **Research date:** October 9, 2026
+**Related files:**
+- [creators-watchlist.md](creators-watchlist.md): creators we're studying (Zach P, Edward Sturm)
+- [reel-transcripts-and-zach-weup.md](reel-transcripts-and-zach-weup.md): how to get reel transcripts
+
 **Scope:** United States. The city and state weren't specified, so the state-specific parts are written for several states (see §5.3).
 **Not legal advice.** Have a lawyer in your state check the licensing and worker-classification parts before you spend money.
 
